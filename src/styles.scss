@@ -1,0 +1,124 @@
+/* Global styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #ff1f4d;
+  --primary-dark: #cc1a3e;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-highlight: rgba(255, 255, 255, 0.15);
+  --mesh-gradient-1: #1a0f1f;
+  --mesh-gradient-2: #2d1326;
+  --mesh-gradient-3: #3d1f40;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@keyframes meshGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fluidText {
+  0% {
+    filter: blur(0.1px);
+    transform: skew(0deg);
+  }
+  50% {
+    filter: blur(0.5px);
+    transform: skew(-0.5deg);
+  }
+  100% {
+    filter: blur(0.1px);
+    transform: skew(0deg);
+  }
+}
+
+@keyframes softFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: #ffffff;
+  background-color: var(--mesh-gradient-1);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient(
+    45deg,
+    var(--mesh-gradient-1),
+    var(--mesh-gradient-2),
+    var(--mesh-gradient-3)
+  );
+  background-size: 400% 400%;
+  animation: meshGradient 15s ease infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+}
+
+/* Scroll-driven animations */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal {
+  view-timeline-name: --reveal;
+  view-timeline-axis: block;
+  animation: reveal linear;
+  animation-timeline: --reveal;
+  animation-range: entry 20% cover 50%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #b20c2f;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
